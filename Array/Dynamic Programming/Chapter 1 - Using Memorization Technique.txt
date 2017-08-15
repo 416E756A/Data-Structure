@@ -1,0 +1,54 @@
+
+Dynamic Programming ::
+    Getting the Solutions of Subproblem and combining into the Bigger problem.
+
+Consider this ::
+    fibonacii calculation :
+
+        int fib(int n)
+        {
+            if(n<=1)
+                return n;
+            return fib(n-1)+fib(n-2);
+        }
+
+Here Everytime fib() is called either if we have calculated or not. It creates lots of
+memory wastages.
+
+What if we store the pre calculated values and store in it a table
+Then we dont have to re calculate it.
+
+1.Consider Memorization using an array ::
+
+Simple Recursive Program can be Modified into Dynamic program.
+
+    int lookup[n];
+    for(i=0;i<n;i++)
+        lookup[i]=NIL;
+
+    int fib(int n)
+    {
+        if(lookup[n]==NIL)
+        {
+            if(n<=1)
+                lookup[n]=n;
+            else
+                lookup[n]=fib(n-1)+fib(n-2);
+        }
+        return lookup[n];
+    }
+
+
+2.Consider Tabulation ::
+
+    void fib(int n)
+    {
+        int i;
+        int fib[0]=0;
+        int fib[1]=1;
+        for(i=2;i<n;i++)
+        {
+            printf("%d\t%d",fib[i-2],fib[i-1]);
+            fib[i]=fib[i-1]+fib[i-2];
+        }
+    }
